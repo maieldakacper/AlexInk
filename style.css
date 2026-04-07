@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden; /* TO JEST KLUCZ: blokuje poziomy pasek przewijania! */
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #0a0a0a; /* Głęboka, smolista czerń */
@@ -356,47 +360,36 @@ h1, h2, h3, .logo {
     }
 }
 
-/* ==========================================================================
-   PEŁNA RESPONSYWNOŚĆ (TELEFONY I TABLETY)
-   ========================================================================== */
-
-/* TABLETY I MNIEJSZE LAPTOPY (do 900px) */
-@media (max-width: 900px) {
-    /* Sekcja "O mnie" (index.html) */
-    .about-grid {
-        grid-template-columns: 1fr; /* Zdjęcie ląduje pod tekstem */
-        gap: 40px;
-    }
-}
-
 /* SMARTFONY (do 768px) */
 @media (max-width: 768px) {
     
-    /* 1. Nawigacja (Menu) */
+    /* 1. Nawigacja (Menu pionowe) */
     .navbar {
-        flex-direction: column; /* Układa logo i linki jedno pod drugim */
-        padding: 15px 20px;
-        gap: 15px;
+        flex-direction: column; /* Wymusza układ pionowy: najpierw logo, potem linki */
+        padding: 20px;
+        gap: 20px;
+        text-align: center;
     }
     
     .navbar ul {
-        flex-wrap: wrap; /* Linki zawijają się, jeśli brakuje miejsca */
+        flex-direction: row; 
+        flex-wrap: wrap; /* Jak się nie zmieszczą, spadną niżej */
         justify-content: center;
         gap: 15px;
-    }
-
-    .navbar a {
-        font-size: 1rem;
+        width: 100%;
     }
 
     /* 2. Hero Section (Strona główna) */
     .hero {
         padding: 0 5%;
+        text-align: center; /* Środkujemy tekst na telefonie, wygląda to o wiele lepiej */
+        justify-content: center;
     }
 
     .hero-content h1 {
-        font-size: 3.2rem; /* Znacznie zmniejszony ogromny nagłówek */
+        font-size: 2.5rem; /* Zmniejszamy giganta, żeby zmieścił się na małym ekranie */
         margin-bottom: 15px;
+        word-wrap: break-word; /* W ostateczności złamie słowo, zamiast psuć stronę */
     }
 
     .hero-content p {
@@ -406,7 +399,7 @@ h1, h2, h3, .logo {
 
     /* 3. Sekcja "O mnie" */
     .about {
-        padding: 60px 5%; /* Mniej pustego miejsca nad/pod sekcją */
+        padding: 60px 5%; 
     }
 
     .about-text h2 {
@@ -428,12 +421,13 @@ h1, h2, h3, .logo {
     }
 
     .booking-grid {
+        grid-template-columns: 1fr;
         gap: 40px;
     }
 
     .faq-item summary {
         font-size: 1.1rem;
-        padding: 15px; /* Mniejsze marginesy na telefonie */
+        padding: 15px; 
     }
 
     .faq-item p {
@@ -441,7 +435,7 @@ h1, h2, h3, .logo {
     }
 
     .contact-card {
-        padding: 25px 20px; /* Ciasniejsze upakowanie karty kontaktowej */
+        padding: 25px 20px; 
     }
 
     .booking-checklist li {
