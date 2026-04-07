@@ -1,0 +1,357 @@
+/* --- BAZA I ZMIENNE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #0a0a0a; /* Głęboka, smolista czerń */
+    color: #e0e0e0; /* Jasnoszary tekst (lepszy kontrast niż czysta biel) */
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.accent {
+    color: #d90429; /* Krwista czerwień */
+}
+
+/* --- NAWIGACJA --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    background-color: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #a0a0a0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #ffffff;
+    border-bottom: 2px solid #d90429;
+    padding-bottom: 5px;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 90vh;
+    background-image: url('https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=2070&auto=format&fit=crop'); /* Mroczne zdjęcie dziarania */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #d90429;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #b00320;
+    transform: translateY(-3px);
+}
+
+/* --- O MNIE --- */
+.about {
+    padding: 100px 10%;
+    background-color: #121212; /* Delikatnie jaśniejszy czarny, by oddzielić sekcje */
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    border-left: 5px solid #d90429;
+    padding-left: 15px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #999;
+}
+
+.about-image img {
+    width: 100%;
+    filter: grayscale(100%); /* Zdjęcie zrobione na czarno-biało przez CSS! */
+    border: 1px solid #333;
+    transition: filter 0.5s ease;
+}
+
+/* Kolor wraca po najechaniu myszką */
+.about-image img:hover {
+    filter: grayscale(0%);
+}
+
+/* --- NAGŁÓWEK PODSTRON (Galeria i Info) --- */
+.page-header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background-color: #0a0a0a;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #999;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- GALERIA MASONRY (Asymetryczna siatka) --- */
+.gallery {
+    padding: 40px 5%;
+    background-color: #0a0a0a;
+}
+
+.masonry-grid {
+    column-count: 3; /* Dzieli galerię na 3 kolumny */
+    column-gap: 15px; /* Odstęp między kolumnami */
+}
+
+.masonry-item {
+    margin-bottom: 15px; /* Odstęp między zdjęciami w pionie */
+    break-inside: avoid; /* Zapobiega "łamaniu" zdjęcia wpół między kolumnami */
+    overflow: hidden; /* Utrzymuje zdjęcie w ryzach przy powiększaniu */
+    position: relative;
+    cursor: pointer;
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block; /* Usuwa mikroskopijny margines pod zdjęciem w HTML */
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.8) grayscale(30%); /* Domyślnie lekko przygaszone i zgaszone kolory */
+}
+
+/* Mroczny efekt najazdu - zdjęcie "ożywa" */
+.masonry-item:hover img {
+    transform: scale(1.05); /* Lekkie przybliżenie */
+    filter: brightness(1.1) grayscale(0%); /* Pełen kontrast i kolor */
+}
+
+/* --- RESPONSYWNOŚĆ DLA GALERII --- */
+@media (max-width: 900px) {
+    .masonry-grid {
+        column-count: 2; /* Na tabletach 2 kolumny */
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry-grid {
+        column-count: 1; /* Na telefonach 1 kolumna (jedno zdjęcie pod drugim) */
+    }
+}
+
+/* ==========================================================================
+   PODSTRONA INFO (Zapisy i FAQ)
+   ========================================================================== */
+
+.booking-section {
+    padding: 60px 10%;
+    background-color: #0a0a0a;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.booking-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    border-bottom: 1px solid #222;
+    padding-bottom: 15px;
+}
+
+/* --- FAQ (Akordion) --- */
+.faq-item {
+    background-color: #121212;
+    margin-bottom: 15px;
+    border-left: 3px solid #d90429; /* Czerwony akcent po lewej */
+    transition: background-color 0.3s ease;
+}
+
+.faq-item:hover {
+    background-color: #1a1a1a;
+}
+
+/* Stylowanie nagłówka pytania */
+.faq-item summary {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    padding: 20px;
+    cursor: pointer;
+    list-style: none; /* Ukrywa domyślny trójkącik */
+    position: relative;
+    letter-spacing: 1px;
+}
+
+/* Ukrywanie trójkącików w przeglądarkach na silniku WebKit (Safari) */
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Własna strzałka/ikona plusem (opcjonalnie, tu zrobimy prosto przez tekst) */
+.faq-item p {
+    padding: 0 20px 20px 20px;
+    color: #a0a0a0;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* --- KARTA BEZPOŚREDNIEGO KONTAKTU (Zamiast formularza) --- */
+.contact-card {
+    background-color: #121212;
+    padding: 40px;
+    border: 1px solid #222;
+    border-top: 3px solid #d90429; /* Czerwony akcent na górze karty */
+}
+
+.contact-intro {
+    font-size: 1.05rem;
+    color: #b3b3b3;
+    margin-bottom: 25px;
+}
+
+.booking-checklist {
+    list-style: none;
+    margin-bottom: 35px;
+}
+
+.booking-checklist li {
+    margin-bottom: 15px;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1rem;
+}
+
+.booking-checklist li i {
+    color: #d90429; /* Czerwone ikonki w liście */
+    font-size: 1.2rem;
+    width: 20px; /* Stała szerokość ikon, żeby tekst równo się zaczynał */
+    text-align: center;
+}
+
+/* --- DUŻE PRZYCISKI SOCIAL MEDIA --- */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+/* Kolory brandowe sociali w mrocznym wydaniu */
+.ig-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.fb-btn {
+    background-color: #0084ff;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2); /* Lekkie rozjaśnienie po najechaniu */
+}
+
+/* --- RESPONSYWNOŚĆ DLA SEKCJI ZAPISÓW --- */
+@media (max-width: 900px) {
+    .booking-grid {
+        grid-template-columns: 1fr; /* Pytania i formularz jedno pod drugim na mniejszych ekranach */
+        gap: 40px;
+    }
+}
