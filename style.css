@@ -355,3 +355,101 @@ h1, h2, h3, .logo {
         gap: 40px;
     }
 }
+
+/* ==========================================================================
+   PEŁNA RESPONSYWNOŚĆ (TELEFONY I TABLETY)
+   ========================================================================== */
+
+/* TABLETY I MNIEJSZE LAPTOPY (do 900px) */
+@media (max-width: 900px) {
+    /* Sekcja "O mnie" (index.html) */
+    .about-grid {
+        grid-template-columns: 1fr; /* Zdjęcie ląduje pod tekstem */
+        gap: 40px;
+    }
+}
+
+/* SMARTFONY (do 768px) */
+@media (max-width: 768px) {
+    
+    /* 1. Nawigacja (Menu) */
+    .navbar {
+        flex-direction: column; /* Układa logo i linki jedno pod drugim */
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    
+    .navbar ul {
+        flex-wrap: wrap; /* Linki zawijają się, jeśli brakuje miejsca */
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+    }
+
+    /* 2. Hero Section (Strona główna) */
+    .hero {
+        padding: 0 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 3.2rem; /* Znacznie zmniejszony ogromny nagłówek */
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 1.05rem;
+        margin-bottom: 30px;
+    }
+
+    /* 3. Sekcja "O mnie" */
+    .about {
+        padding: 60px 5%; /* Mniej pustego miejsca nad/pod sekcją */
+    }
+
+    .about-text h2 {
+        font-size: 2.2rem;
+    }
+
+    /* 4. Nagłówki podstron (Galeria i Info) */
+    .page-header {
+        padding: 50px 15px 20px;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    /* 5. Zapisy i FAQ (info.html) */
+    .booking-section {
+        padding: 40px 5%;
+    }
+
+    .booking-grid {
+        gap: 40px;
+    }
+
+    .faq-item summary {
+        font-size: 1.1rem;
+        padding: 15px; /* Mniejsze marginesy na telefonie */
+    }
+
+    .faq-item p {
+        padding: 0 15px 15px 15px;
+    }
+
+    .contact-card {
+        padding: 25px 20px; /* Ciasniejsze upakowanie karty kontaktowej */
+    }
+
+    .booking-checklist li {
+        font-size: 0.95rem;
+    }
+    
+    .social-btn {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+}
